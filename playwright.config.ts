@@ -35,7 +35,6 @@ export default defineConfig({
   fullyParallel: Boolean(env.fullyParallel ?? false),
   workers:       Number(env.workers        ?? 1),
   use: {
-    storageState:  ".auth/salesforce.json",
     baseURL:       String(env.baseURL       ?? "https://example.com"),
     headless:      env.headless !== false,
     trace:         (String(env.trace        ?? "retain-on-failure")) as "off" | "on" | "retain-on-failure" | "on-all-retries",
@@ -55,8 +54,8 @@ export default defineConfig({
     },
   },
   projects: [
-    { name: "setup", testMatch: /auth\.setup\.ts/, use: { storageState: undefined } },
-    { name: browser, use: browserDevice(browser), dependencies: ["setup"] },
+    { name: "setup", testMatch: /auth\.setup\.ts/ },
+    { name: browser, use: { ...browserDevice(browser), storageState: ".auth/salesforce.json" }, dependencies: ["setup"] },
   ],
   reporter: process.env.AUTOM_EXECUTION_PROVIDER === "browserstack"
     ? [["list"], ["json", { outputFile: "logs/playwright-report.json" }]]
