@@ -28,7 +28,7 @@
             "targetDescription": "Login as Sales Representative",
             "screenName": "SalesforceLoginPage",
             "pageObjectMethod": "loginAsRole",
-            "value": "admin"
+            "value": "sales"
           },
           {
             "id": "s3",

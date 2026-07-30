@@ -7,7 +7,7 @@ test('Create Lead with mandatory fields and verify default status and redirect',
     await page.goto('https://orgfarm-cdb7bbd1fc-dev-ed.develop.my.salesforce.com');
   });
   await test.step('Click — Login as Sales Representative', async () => {
-    await salesforceLoginPage.loginAsRole('admin');
+    await salesforceLoginPage.loginAsRole('sales');
   });
   await test.step('Click — Go to Leads tab — (a[title=\'Leads\'])', async () => {
     await homePage.clickLeads();
