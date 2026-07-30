@@ -1,0 +1,88 @@
+{
+  "id": "11bb5190-1523-4483-9ba8-9bc3e83411e4",
+  "testPlanId": "64c906bb-b327-41c6-9f0a-5001db27b73b",
+  "requirementId": "1d83d26d-5669-47c4-94f5-ad2682e22bc0",
+  "suiteName": "Lead Management - Create Lead (SMOKE)",
+  "case": {
+    "id": "11bb5190-1523-4483-9ba8-9bc3e83411e4",
+    "title": "Validation error when Company is left blank",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open Salesforce environment URL",
+        "value": "https://orgfarm-cdb7bbd1fc-dev-ed.develop.my.salesforce.com"
+      },
+      {
+        "id": "s2",
+        "action": "tap",
+        "targetDescription": "Login as Sales Representative",
+        "screenName": "SalesforceLoginPage",
+        "pageObjectMethod": "loginAsRole",
+        "value": "Sales Representative"
+      },
+      {
+        "id": "s3",
+        "action": "tap",
+        "targetDescription": "Go to Leads tab",
+        "locatorHint": "a[title='Leads']"
+      },
+      {
+        "id": "s4",
+        "action": "waitForVisible",
+        "targetDescription": "Wait for New button on Leads list view",
+        "locatorHint": "button[name='New']",
+        "value": "10000"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Click New to open Lead creation modal",
+        "locatorHint": "button[name='New']"
+      },
+      {
+        "id": "s6",
+        "action": "waitForVisible",
+        "targetDescription": "Wait for New Lead modal",
+        "locatorHint": "div[role='dialog']",
+        "value": "10000"
+      },
+      {
+        "id": "s7",
+        "action": "fill",
+        "targetDescription": "Enter Last Name (required)",
+        "locatorHint": "input[name='lastName']",
+        "value": "Smith"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Attempt to Save with Company blank",
+        "locatorHint": "button[name='SaveEdit']"
+      },
+      {
+        "id": "s9",
+        "action": "assertVisible",
+        "targetDescription": "Company field flagged as invalid",
+        "locatorHint": "input[name='Company'][aria-invalid='true']",
+        "assertion": "true"
+      },
+      {
+        "id": "s10",
+        "action": "assertContainsText",
+        "targetDescription": "Validation message displayed in modal",
+        "locatorHint": "div[role='dialog']",
+        "assertion": "Complete this field"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression"
+    ]
+  }
+}

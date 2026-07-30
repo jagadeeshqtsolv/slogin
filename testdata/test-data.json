@@ -1,1 +1,12 @@
-{}
+{
+  "createLeadWithMandatoryFieldsAndVerifyDefaultStatusAndRedirect": {
+    "enterLastNameRequired": "Smith",
+    "enterCompanyRequired": "ABC Technologies"
+  },
+  "validationErrorWhenLastNameIsLeftBlank": {
+    "enterCompanyRequired": "ABC Technologies"
+  },
+  "validationErrorWhenCompanyIsLeftBlank": {
+    "enterLastNameRequired": "Smith"
+  }
+}
