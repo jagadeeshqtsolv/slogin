@@ -19,3 +19,4 @@ browserstack.yml
 
 # Recorder artifacts
 .dom-captures/
+.git-users/

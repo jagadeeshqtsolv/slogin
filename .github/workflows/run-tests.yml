@@ -1,6 +1,18 @@
 # .github/workflows/run-tests.yml
 # Triggered by Autonix via workflow_dispatch.
 # Requires: Node.js, npm, and test dependencies installed.
+#
+# Salesforce Login step secrets — this project has Salesforce auto-login enabled. A CI runner
+# does a fresh checkout and never sees this platform's local execution/.env.salesforce-auth,
+# so add these as repository secrets (Settings → Secrets and variables → Actions) with the exact names below (values from Setup → Auth → Salesforce Login):
+#   SF_AUTH_CLIENT_ID
+#   SF_AUTH_USERNAME
+#   SF_AUTH_LOGIN_URL
+#   SF_AUTH_IS_SANDBOX
+#   SF_AUTH_PRIVATE_KEY_B64
+#   SF_AUTH_ROLE_ADMIN_USERNAME
+#   SF_AUTH_ROLE_SALES_USERNAME
+#
 name: run-tests
 
 on:
@@ -75,7 +87,13 @@ jobs:
         env:
           AUTOM_ENVIRONMENT: ${{ inputs.environment }}
           TEST_ENV: ${{ inputs.environment }}
-
+          SF_AUTH_CLIENT_ID: ${{ secrets.SF_AUTH_CLIENT_ID }}
+          SF_AUTH_USERNAME: ${{ secrets.SF_AUTH_USERNAME }}
+          SF_AUTH_LOGIN_URL: ${{ secrets.SF_AUTH_LOGIN_URL }}
+          SF_AUTH_IS_SANDBOX: ${{ secrets.SF_AUTH_IS_SANDBOX }}
+          SF_AUTH_PRIVATE_KEY_B64: ${{ secrets.SF_AUTH_PRIVATE_KEY_B64 }}
+          SF_AUTH_ROLE_ADMIN_USERNAME: ${{ secrets.SF_AUTH_ROLE_ADMIN_USERNAME }}
+          SF_AUTH_ROLE_SALES_USERNAME: ${{ secrets.SF_AUTH_ROLE_SALES_USERNAME }}
         run: |
           SPEC_PATHS_ARG="${{ inputs.spec_paths }}"
           GREP_PATTERN="${{ inputs.grep }}"
