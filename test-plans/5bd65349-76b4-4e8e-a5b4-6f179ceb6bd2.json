@@ -1,0 +1,11 @@
+{
+  "id": "5bd65349-76b4-4e8e-a5b4-6f179ceb6bd2",
+  "requirementId": "1d83d26d-5669-47c4-94f5-ad2682e22bc0",
+  "model": "manual",
+  "createdAt": "2026-07-30T13:32:19.097Z",
+  "plan": {
+    "version": 1,
+    "suiteName": "tet",
+    "cases": []
+  }
+}

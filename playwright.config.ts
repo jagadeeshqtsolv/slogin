@@ -55,7 +55,8 @@ export default defineConfig({
     },
   },
   projects: [
-    { name: browser, use: browserDevice(browser) },
+    { name: "setup", testMatch: /auth\.setup\.ts/ },
+    { name: browser, use: browserDevice(browser), dependencies: ["setup"] },
   ],
   reporter: process.env.AUTOM_EXECUTION_PROVIDER === "browserstack"
     ? [["list"], ["json", { outputFile: "logs/playwright-report.json" }]]
