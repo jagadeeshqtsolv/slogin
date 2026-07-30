@@ -28,19 +28,23 @@
             "targetDescription": "Login as Sales Representative",
             "screenName": "SalesforceLoginPage",
             "pageObjectMethod": "loginAsRole",
-            "value": "Sales Representative"
+            "value": "admin"
           },
           {
             "id": "s3",
             "action": "tap",
             "targetDescription": "Go to Leads tab",
-            "locatorHint": "a[title='Leads']"
+            "locatorHint": "a[title='Leads']",
+            "screenName": "Home",
+            "pageObjectMethod": "clickLeads"
           },
           {
             "id": "s4",
             "action": "waitForVisible",
             "targetDescription": "Wait for New button on Leads list view",
             "locatorHint": "button[name='New']",
+            "screenName": "Home",
+            "pageObjectMethod": "expectLeadsVisible",
             "value": "10000"
           },
           {
@@ -50,17 +54,12 @@
             "locatorHint": "button[name='New']"
           },
           {
-            "id": "s6",
-            "action": "waitForVisible",
-            "targetDescription": "Wait for New Lead modal",
-            "locatorHint": "div[role='dialog']",
-            "value": "10000"
-          },
-          {
             "id": "s7",
             "action": "fill",
             "targetDescription": "Enter Last Name (required)",
             "locatorHint": "input[name='lastName']",
+            "screenName": "LeadNew",
+            "pageObjectMethod": "fillLastName",
             "value": "Smith"
           },
           {
@@ -68,13 +67,17 @@
             "action": "fill",
             "targetDescription": "Enter Company (required)",
             "locatorHint": "input[name='Company']",
+            "screenName": "LeadNew",
+            "pageObjectMethod": "fillCompany",
             "value": "ABC Technologies"
           },
           {
             "id": "s9",
             "action": "tap",
             "targetDescription": "Save new Lead",
-            "locatorHint": "button[name='SaveEdit']"
+            "locatorHint": "button[name='SaveEdit']",
+            "screenName": "LeadNew",
+            "pageObjectMethod": "clickSaveAndNew"
           },
           {
             "id": "s10",

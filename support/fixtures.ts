@@ -1,4 +1,5 @@
 import { test as base, expect } from "@playwright/test";
+import { CommonPage } from "../pageobjects/CommonPage";
 import { HomePage } from "../pageobjects/HomePage";
 import { LeadNewPage } from "../pageobjects/LeadNewPage";
 import { LeadPipelineInspectionPage } from "../pageobjects/LeadPipelineInspectionPage";
@@ -7,6 +8,7 @@ import { LoginPage } from "../pageobjects/LoginPage";
 import { SalesforceLoginPage } from "../pageobjects/SalesforceLoginPage";
 
 type AppFixtures = {
+  commonPage: CommonPage;
   homePage: HomePage;
   leadNewPage: LeadNewPage;
   leadPipelineInspectionPage: LeadPipelineInspectionPage;
@@ -16,6 +18,9 @@ type AppFixtures = {
 };
 
 export const test = base.extend<AppFixtures>({
+  commonPage: async ({ page }, use) => {
+    await use(new CommonPage(page));
+  },
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
   },
