@@ -55,7 +55,7 @@ export default defineConfig({
     },
   },
   projects: [
-    { name: "setup", testMatch: /auth\.setup\.ts/ },
+    { name: "setup", testMatch: /auth\.setup\.ts/, use: { storageState: undefined } },
     { name: browser, use: browserDevice(browser), dependencies: ["setup"] },
   ],
   reporter: process.env.AUTOM_EXECUTION_PROVIDER === "browserstack"
